@@ -1,0 +1,59 @@
+class TextEditor:
+ def __init__(self):
+    self.document=""
+    self.Undo_stack=[]
+    self.Redo_stack=[]
+    
+ def make_change(self,change):
+  self.Undo_stack.append(self.document)
+  self.document+=change
+  self.Redo_stack.clear()
+  print("change made.")
+  self.display_content()
+  
+  
+ def undo_action(self):
+  if  self.Undo_stack:
+     self.Redo_stack.append(self.document)
+     self.document=self.Undo_stack.pop()
+     print("\n Undo performed")
+  else:
+     print("\n no more action to Undo")
+   
+ def redo_action(self):
+  if self.Redo_stack:
+     self.Undo_stack.append(self.document)
+     self.document=self.Redo_stack.pop()
+     print("\n redo performed")
+  else:
+     print("\n no more action to Redo")
+      
+ def display_content(self):
+  print(self.document)
+      
+ def menu(self):
+  while True:
+   print("===menu===")
+   print("1.Make a change")
+   print("2.Undo")
+   print("3.Redo")
+   print("4.Display")
+   print("5.Exit")
+   choice=int(input("Enter your choice:"))
+   if choice==1:
+    change=input("Text to be added:")
+    self.make_change(change)
+   elif choice==2:
+    self.undo_action()
+   elif choice==3:
+    self.redo_action()
+   elif choice==4:
+    self.display_content()
+   elif choice==5:
+    print("Exiting...")
+    break
+   else:
+     print("Invalid Input.")
+
+Editor=TextEditor()
+Editor.menu()
