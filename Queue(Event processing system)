@@ -1,0 +1,73 @@
+from collections import deque
+
+class Q_deque:
+    def __init__(self):
+        self.q = deque()
+
+    def add_event(self, event):
+        self.q.append(event)
+        print(f"Event '{event}' added.")
+
+    def process_event(self):
+        if self.q:
+            event = self.q.popleft()
+            print(f"Event '{event}' is processed.")
+        else:
+            print("No events to process. Queue is empty.")
+
+    def cancel_event(self, event):
+        if event in self.q:
+            self.q.remove(event)
+            print(f"Event '{event}' is removed.")
+        else:
+            print(f"Event '{event}' not found or already processed.")
+
+    def display(self):
+        if self.q:
+            print("Pending Events in Queue:")
+            for e in self.q:
+                print(" -", e)
+        else:
+            print("No pending events in the queue.")
+
+    def menu(self):
+        while True:
+            print("\n=== MENU ===")
+            print("1. Add Event")
+            print("2. Process Event")
+            print("3. Cancel Event")
+            print("4. Display Events")
+            print("5. Exit")
+
+            try:
+                choice = int(input("Enter your choice: "))
+            except ValueError:
+                print("Please enter a valid number.")
+                continue
+
+            if choice == 1:
+                event = input("Enter event name: ")
+                self.add_event(event)
+
+            elif choice == 2:
+                self.process_event()
+
+            elif choice == 3:
+                event = input("Enter event name to cancel: ")
+                self.cancel_event(event)
+
+            elif choice == 4:
+                self.display()
+
+            elif choice == 5:
+                print("Exiting... Goodbye!")
+                break
+
+            else:
+                print("Invalid choice! Please choose between 1 and 5.")
+
+
+# Run the program
+if __name__ == "__main__":
+    obj = Q_deque()
+    obj.menu()
