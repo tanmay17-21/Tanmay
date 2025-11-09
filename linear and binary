@@ -1,4 +1,8 @@
-arr=[1,2,3,4,5]
+arr=[]
+size=int(input("Enter the array size:"))
+for i in range(0,size):
+    ele=int(input("Enter the element:"))
+    arr.append(ele)
 
 def linear_search(arr,target_id):
     for i in range(len(arr)):
@@ -7,6 +11,7 @@ def linear_search(arr,target_id):
     return False
     
 def binary_search(arr,target_id):
+    arr.sort()
     low=0
     high=len(arr)-1
     while low<=high:
