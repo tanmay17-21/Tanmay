@@ -1,0 +1,20 @@
+def binary_search(arr_list,target_id):
+    low=0
+    high=len(arr)-1
+   
+    while low<=high:
+        mid=(low+high)//2
+        if arr[mid]==target_id:
+            return True
+        elif arr[mid]<target_id:
+            low=mid+1
+        else:
+            high=mid-1 
+    return False
+
+search_id=int(input("Enter id to search:"))
+found=binary_search(arr,search_id)
+if found:
+    print("ID found.")
+else:
+    print("Id not found.")
