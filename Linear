@@ -1,0 +1,14 @@
+arr=[1,2,3,4,5]
+
+def linear_search(arr,target_id):
+    for i in range(len(arr)):
+        if arr[i]==target_id:
+            return True
+    return False
+
+search_id=int(input("Enter id to search:"))
+found=linear_search(arr,search_id)
+if found:
+    print("Id found")
+else:
+    print("Id not found.")
