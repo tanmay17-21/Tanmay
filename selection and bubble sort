@@ -1,4 +1,8 @@
-arr=[40,20,30,10,50]
+arr=[]
+size=int(input("Enter the array size:"))
+for i in range(0,size):
+    ele=float(input("Enter the element:"))
+    arr.append(ele)
 
 def selection_sort(arr):
     n=len(arr)
@@ -46,5 +50,3 @@ while True:
     else:
         print("Invalid Input.")
         break
-    
-
